@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Group</title>
+</head>
+<body>
+    <h1>My Group</h1>
+    <ul>
+        <li>MSSV: <span id="student-id"></span></li>
+        <li>Name: <span id="student-name"></span></li>
+    </ul>
+    <script>
+        fetch('/<MSSV>/<id>')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('student-id').textContent = 'Not valid';
+                    document.getElementById('student-name').textContent = 'Not valid';
+                } else {
+                    document.getElementById('student-id').textContent = data.id;
+                    document.getElementById('student-name').textContent = data.name;
+                }
+            });
+    </script>
+</body>
+</html>
